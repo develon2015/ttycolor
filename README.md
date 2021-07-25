@@ -4,6 +4,15 @@ Easy way to use termcolor.
 
 # usage
 
+`cargo.toml`
+
+```
+[dependencies]
+ttycolor = "0.1.0"    # easy way to use termcolor
+```
+
+`main.rs`
+
 ```
 extern crate ttycolor;
 use ttycolor::ColorTrait;
