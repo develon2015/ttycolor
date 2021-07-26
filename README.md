@@ -29,3 +29,7 @@ fn main() {
     println!("{}: {}", str.green(), format!("{:018p}", str).red());
 }
 ```
+
+# preview
+
+![screenshot](./screenshot.png)
