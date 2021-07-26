@@ -175,6 +175,7 @@ impl std::ops::Deref for ColorString {
 impl Display for ColorString {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let mut stdout = StandardStream::stdout(termcolor::ColorChoice::Auto);
+        stdout.lock();
         stdout
             .set_color(
                 ColorSpec::new()
