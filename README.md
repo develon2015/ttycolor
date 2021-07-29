@@ -1,6 +1,6 @@
 # ttycolor
 
-Easy way to use termcolor.
+Easy way to use [termcolor](https://github.com/BurntSushi/termcolor).
 
 # usage
 
