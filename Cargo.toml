@@ -1,8 +1,9 @@
 [package]
 name = "ttycolor"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["develon2015 <302615249@qq.com>"]
 edition = "2018"
+repository = "https://github.com/develon2015/ttycolor"
 description = "easy way to use termcolor"
 license = "MIT"
 
