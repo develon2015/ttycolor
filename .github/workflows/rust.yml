@@ -1,0 +1,45 @@
+name: Rust
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build ${{ matrix.file }} on ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+        file:
+          - '*'
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    env:
+      CARGO_TERM_COLOR: always
+    steps:
+      - uses: actions/checkout@master
+      - name: Test
+        run: cargo test --verbose
+      - name: GH Release
+        uses: softprops/action-gh-release@v2.0.2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: ${{ steps.naming.outputs.FILENAME }}
+      - name: Publish to crates.io
+        run: |
+          cargo login ${{ secrets.CRATES_IO_API_TOKEN }}
+          cargo publish
+      - name: Done
+        run: |
+          echo "### [${{ github.ref_name }}](https://github.com/$GITHUB_REPOSITORY/releases/tag/${{ github.ref_name }}) Released! :rocket:" \
+            >> $GITHUB_STEP_SUMMARY
+
+permissions:
+  contents: write

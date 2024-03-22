@@ -32,4 +32,4 @@ fn main() {
 
 # preview
 
-![screenshot](./screenshot.png)
+![screenshot](https://github.com/develon2015/ttycolor/assets/27133157/af55ad01-82cd-4992-9947-e721daffb1b5)
